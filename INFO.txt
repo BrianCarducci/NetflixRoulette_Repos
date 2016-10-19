@@ -1,4 +1,4 @@
 Netflix Roulette Android app info:
 Enter a movie and/or director, app will return random movie. Re-spin button in movie activity is not implemented yet. If a picture for the movie does not appear, the movie poster is not accessible.
 
-This app uses the Netflix Roulette API for querying and displaying data.
+This app uses the Netflix Roulette API for retrieving data.
