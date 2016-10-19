@@ -1,0 +1,2 @@
+Netflix Roulette Android app info:
+Enter a movie and/or director, app will return random movie. Re-spin button in movie activity is not implemented yet. If a picture for the movie does not appear, the movie poster is not accessible.
