@@ -1,5 +1,6 @@
 package com.example.bccarducci.netflixroulette;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Message;
@@ -38,7 +39,7 @@ import java.util.regex.Pattern;
  *
  *****************************************************************************************/
 
-public class InputActivity extends AppCompatActivity {
+public class InputActivity extends Activity {
 
 
     @Override
@@ -58,9 +59,6 @@ public class InputActivity extends AppCompatActivity {
         EditText editTextD = (EditText) findViewById(R.id.director);
         String director = editTextD.getText().toString().replace(" ","%20");
 
-        EditText editTextT = (EditText) findViewById(R.id.title);
-        String title = editTextT.getText().toString().replace(" ","%20");
-
         ArrayList<Movie> movies = new ArrayList();
 
         @Override
@@ -69,22 +67,7 @@ public class InputActivity extends AppCompatActivity {
             URL url = null;
 
             try {
-                //Determines which input was used to search
-                if(!actor.equals("")){
-                    url = new URL("https://netflixroulette.net/api/api.php?actor=" + actor);
-                    director.equals("");
-                    title.equals("");
-                }
-                if(!director.equals("")){
-                    url = new URL("https://netflixroulette.net/api/api.php?director=" + director);
-                    actor.equals("");
-                    title.equals("");
-                }
-                if(!title.equals("")){
-                    url = new URL("http://netflixroulette.net/api/api.php?title=" + title);
-                    actor.equals("");
-                    director.equals("");
-                }
+                url = new URL("https://netflixroulette.net/api/api.php?actor=" + actor + "&director=" + director);
 
                 //Creates URL connection with valid input
                 urlConnection = (HttpURLConnection) url.openConnection();
@@ -112,20 +95,25 @@ public class InputActivity extends AppCompatActivity {
         //Method to send to movieActivity
         protected void onPostExecute(String result) {
             Random random = new Random();
-            int index = random.nextInt(movies.size()-1);  //Chooses a random movie from array list
-            Intent intent = new Intent(InputActivity.this, MovieActivity.class);
+            try {
+                int index = random.nextInt(movies.size() - 1);  //Chooses a random movie from array list
+                Intent intent = new Intent(InputActivity.this, MovieActivity.class);
 
-            //puts JSON strings into intent
-            intent.putExtra("title",movies.get(index).getTitle());
-            intent.putExtra("director",movies.get(index).getDirector());
-            intent.putExtra("genre",movies.get(index).getGenre());
-            intent.putExtra("cast",movies.get(index).getCast());
-            intent.putExtra("summary",movies.get(index).getSummary());
-            intent.putExtra("index",index);
+                //puts JSON strings into intent
+                intent.putExtra("title", movies.get(index).getTitle());
+                intent.putExtra("director", movies.get(index).getDirector());
+                intent.putExtra("genre", movies.get(index).getGenre());
+                intent.putExtra("cast", movies.get(index).getCast());
+                intent.putExtra("summary", movies.get(index).getSummary());
+                intent.putExtra("poster", movies.get(index).getPoster());
+                intent.putExtra("index", index);
 
-            movies = MovieActivity.movieAL;
+                //movies = MovieActivity.movieAL;
 
-            startActivity(intent);
+                startActivity(intent);
+            } catch (Exception ex){
+
+            }
         }//Ends onPostExecute()
     }//Ends AsyncTask
 
@@ -153,6 +141,7 @@ public class InputActivity extends AppCompatActivity {
         String show_cast = null;
         String director = null;
         String summary = null;
+        String poster = null;
 
         reader.beginObject();
         while (reader.hasNext()) {
@@ -167,12 +156,14 @@ public class InputActivity extends AppCompatActivity {
                 director = reader.nextString();
             } else if (name.equals("summary")) {
                 summary = reader.nextString();
+            } else if (name.equals("poster")) {
+                poster = reader.nextString();
             } else {
                 reader.skipValue();
             }
         }
         reader.endObject();
-        return new Movie(show_title, genre, show_cast, director, summary);
+        return new Movie(show_title, genre, show_cast, director, summary, poster);
     }//Ends readMovie()
 
 }//Ends InputActivity class

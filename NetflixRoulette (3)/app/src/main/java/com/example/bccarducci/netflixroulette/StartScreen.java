@@ -1,5 +1,6 @@
 package com.example.bccarducci.netflixroulette;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -12,7 +13,7 @@ import android.view.View;
  * Main start screen activity
  *
  *****************************************************************************************/
-public class StartScreen extends AppCompatActivity {
+public class StartScreen extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

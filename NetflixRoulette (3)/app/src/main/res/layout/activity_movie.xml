@@ -10,36 +10,36 @@
     tools:context="com.example.bccarducci.netflixroulette.MovieActivity"
     android:background="#dc0707">
 
-   <TextView
-       android:id="@+id/your_movie"
-       android:layout_width="wrap_content"
-       android:layout_height="wrap_content"
-       android:text="Title:"
-       android:textSize="50dp"
-       />
+
+    <ImageView
+        android:id="@+id/movie_poster"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:src="@drawable/netflix"
+         />
 
     <TextView
         android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="35dp"
-        android:layout_below="@+id/your_movie"
-        />
+        android:text="title test"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <TextView
         android:id="@+id/director_label"
+        android:layout_below="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Director:"
-        android:textSize="20dp"
-        android:layout_below="@+id/title"
-        />
+        android:text="Director:" />
 
     <TextView
         android:id="@+id/director"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="15dp"
+        android:text="director test"
         android:layout_below="@+id/director_label"/>
 
     <TextView
@@ -47,60 +47,64 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Cast:"
-        android:textSize="20dp"
-        android:layout_below="@+id/director"
-        />
+        android:layout_above="@+id/cast"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <TextView
         android:id="@+id/cast"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="15dp"
-        android:layout_below="@+id/cast_label"
-        />
+        android:text="cast test"
+        android:layout_centerVertical="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <TextView
         android:id="@+id/genre_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Genre:"
-        android:textSize="20dp"
-        android:layout_below="@+id/cast"
-        />
+        android:layout_below="@+id/director"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <TextView
         android:id="@+id/genre"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="15dp"
+        android:text="genre test"
         android:layout_below="@+id/genre_label"
-        />
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <TextView
         android:id="@+id/summary_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Summary:"
-        android:textSize="20dp"
-        android:layout_below="@+id/genre"
-        />
+
+
+        android:layout_below="@+id/cast"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <TextView
         android:id="@+id/summary"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="15dp"
+        android:text="summary test"
         android:layout_below="@+id/summary_label"
-        />
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Random!"
         android:id="@+id/random"
-        android:layout_marginTop="69dp"
-        android:layout_below="@+id/summary"
-        android:layout_centerHorizontal="true"
-        android:onClick="random"/>
+        android:onClick="random"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

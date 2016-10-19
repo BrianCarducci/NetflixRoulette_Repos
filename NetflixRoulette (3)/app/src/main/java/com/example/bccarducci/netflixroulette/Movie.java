@@ -21,15 +21,16 @@ import java.util.regex.Pattern;
 public class Movie {
 
     //Variables
-    private String title, genre, cast, director, summary;
+    private String title, genre, cast, director, summary, poster;
 
     //Constructor
-    public Movie(String title, String genre, String cast, String director, String summary) {
+    public Movie(String title, String genre, String cast, String director, String summary, String poster) {
         this.title = title;
         this.genre = genre;
         this.cast = cast;
         this.director = director;
         this.summary = summary;
+        this.poster = poster;
     }
 
     public String getTitle() {
@@ -51,6 +52,8 @@ public class Movie {
     public String getSummary(){
         return summary;
     }
+
+    public String getPoster() { return poster; }
 }
 
 
